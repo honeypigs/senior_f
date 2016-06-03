@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">    
+    <title></title>
+    <link rel="stylesheet" href="static/css/main.css">
+</head>
+<body>
+    <div class="wp">
+        <div class="wp-inner">
+	        <div class="content content1">
+	        	<img src="static/img/logo.png">
+	       		<p class = "mainText">
+	       			<span class = "td1">毕业季 ，</span>
+	       			<span class = "td2">快来和校徽合个影吧 !</span>
+	       		</p>
+				<p class="bottomText">
+					----快来生成你的专属头像----
+				</p>
+	        </div>
+            <div class="page">
+	        	<div class="coverBg"></div>
+            </div>
+            <div class="content content2">
+                <div class="top">
+                    <img src="static/img/qrcode.png" height="100" width="100">
+                    <p class = "mainText">
+                        <span class = "text1">一朝重邮人</span>
+                        <br>
+                        <span class = "text2">一生重邮情</span>
+                    </p>
+                </div>
+                <div class="canvas-wp">
+                    <canvas id = "canvas">
+                    
+                    </canvas>
+                    <img id = "marge">
+                </div>
+                <p class="bottomText">
+                    ----长按：图片保存----
+                    <br>
+                    ---安卓用户请截图---
+                </p>
+            </div>
+            <div class="page">
+            	<div class="coverBg"></div>
+            </div>
+        </div>
+    </div>
+    <span class="start">
+    	<b></b>
+    </span>
+    <script src="http://a.alipayobjects.com/??amui/zepto/1.1.3/zepto.js,static/fastclick/1.0.6/fastclick.min.js"></script>
+    <script>FastClick.attach(document.body);</script>
+    <script src="static/js/fullpage.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src = "static/js/weidata.js"></script>
+    <script>
+    window.onload = function () {
+        var c_wp = document.querySelector(".canvas-wp");
+        var marge = document.querySelector("#marge");
+        var canvas = document.querySelector("#canvas");
+        var ctx = canvas.getContext("2d");
+        canvas.width = c_wp.offsetWidth;
+        canvas.height = c_wp.offsetHeight;
+        canvas.style.visibility = "hidden";
+        canvas.style.float = "left";
+        var img = new Image();
+        // img.crossOrigin = "Anonymous";
+        img.src = "static/img/logo.png";
+        var width = canvas.width;
+        ctx.drawImage(img,(width/10)*7.5,0,width/5,width/5);
+
+        (function saveImage() {
+            var image = canvas.toDataURL("image/png");   
+            marge.setAttribute("src",image);
+        })();
+    }
+    $('.wp-inner').fullpage({
+            loop:false
+        });
+    </script>
+</body>
+</html>
