@@ -1,8 +1,9 @@
 
-html {
-    font-size: 12px;
-}
-@media screen and (min-height:480px) {
+    html {
+        font-size: 12px;
+    }
+
+@media screen and (min-height:420px) {
     html {
         font-size: 12px;
     }
@@ -63,9 +64,9 @@ html {
 	position: absolute;
 	transform: rotate(1deg);
 	text-align: center;
-	width: 20rem;
+	width: 26rem;
 	left: 0;right: 0;
-    top: 12rem;
+        top: 12rem;
 	margin: auto;
 	line-height: 5rem;
 	color: white;
@@ -78,7 +79,7 @@ html {
 }
 .content1 .mainText .td2 {
     display: inline-block;
-    width: 20rem;
+    width: 26rem;
 }
 .content1 .bottomText {
 	position: absolute;
@@ -130,6 +131,15 @@ html {
     font-size: 1rem;
     bottom: 54%;
     z-index: 10000;
+}
+.content2 .endText {
+    position :absolute;
+    width:100%;
+    text-align:center;
+    color:white;
+    font-size:0.8rem;
+    bottom:50%;
+    z-index:10000;
 }
 .canvas-wp {
     margin: 0 auto;
