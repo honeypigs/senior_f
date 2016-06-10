@@ -1,8 +1,8 @@
 {
   "apps": [{
-    "name": "d:myGitseniorYearthinkjssenior_fd:myGitseniorYearthinkjssenior_fsenior",
+    "name": "senior",
     "script": "www/production.js",
-    "cwd": "d:\myGit\seniorYear\thinkjs\senior_f\senior",
+    "cwd": "./",
     "exec_mode": "cluster",
     "instances": 0,
     "max_memory_restart": "1G",

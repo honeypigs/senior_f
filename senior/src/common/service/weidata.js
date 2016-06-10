@@ -30,7 +30,7 @@ export default class extends think.service.base {
     }
   }
   async getOpenid (self) {
-    let redirect_uri = 'http://hongyan.cqupt.edu.cn/' + self.http.req.url;
+    let redirect_uri = 'http://hongyan.cqupt.edu.cn/';
     redirect_uri = UrlEncode(redirect_uri);
     const APPID = 'wx81a4a4b77ec98ff4';
     const URL = 'http://hongyan.cqupt.edu.cn/MagicLoop/index.php?s=/addon/Api/Api/webOauth';
