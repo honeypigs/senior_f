@@ -61,6 +61,21 @@
     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script src = "static/js/weidata.js"></script>
     <script>
+   wx.config({
+           debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+           appId: '<%=jssdk.appid%>', // 必填，公众号的唯一标识
+           timestamp: '<%=jssdk.timeStamp%>', // 必填，生成签名的时间戳
+           nonceStr: '<%=jssdk.str%>', // 必填，生成签名的随机串
+           signature: '<%=jssdk.signature%>',// 必填，签名，见附录1
+           jsApiList: [
+           'onMenuShareTimeline', 
+           'onMenuShareAppMessage', 
+           'onMenuShareQQ',
+           'onMenuShareWeibo',
+           'onMenuShareQZone'
+           ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+       });
+
     window.onload = function () {
         var c_wp = document.querySelector(".canvas-wp");
         var marge = document.querySelector("#marge");
@@ -70,20 +85,78 @@
         canvas.height = c_wp.offsetHeight;
         canvas.style.visibility = "hidden";
         canvas.style.float = "left";
-        var img = new Image();
+        var schLogo = new Image();
+        var headPic = new Image();
         // img.crossOrigin = "Anonymous";
-        img.src = "static/img/logo.png";
+        schLogo.src = "static/img/logo.png";
+        headPic.src = '<%=userInfo.headimgurl%>';
         var width = canvas.width;
-        ctx.drawImage(img,(width/10)*7.5,0,width/5,width/5);
-
+        ctx.drawImage(schLogo,(width/10)*7.5,0,width/5,width/5);
+        ctx.drawImage(headPic,0,0,width,width);
         (function saveImage() {
             var image = canvas.toDataURL("image/png");   
             marge.setAttribute("src",image);
         })();
     }
+
+       wx.ready(function () {
+            wx.onMenuShareTimeline({
+                   title: TITLE,
+                   link: LINK, 
+                   imgUrl: IMGURL,
+                   success: function () {
+                   },
+                   cancel: function () {
+                   }
+               });
+               wx.onMenuShareAppMessage({
+                   title: TITLE,
+                   desc: DESC,
+                   link: LINK,
+                   imgUrl: IMGURL,
+                   type: '',
+                   success: function () {
+                   },
+                   cancel: function () {
+                   }
+               });
+               wx.onMenuShareQQ({
+                   title: TITLE,
+                   desc: DESC,
+                   link: LINK,
+                   imgUrl: IMGURL,
+                   success: function () {
+                   },
+                   cancel: function () {
+                   }
+               });
+               wx.onMenuShareWeibo({
+                   title: TITLE,
+                   desc: DESC,
+                   link: LINK,
+                   imgUrl: IMGURL,
+                   success: function () {
+                   },
+                   cancel: function () {
+                   }
+               });
+               wx.onMenuShareQZone({
+                   title: TITLE,
+                   desc: DESC,
+                   link: LINK,
+                   imgUrl: IMGURL,
+                   success: function () {
+                   },
+                   cancel: function () {
+                   }
+               });
+       });
+       wx.error(function(res){
+       });
     $('.wp-inner').fullpage({
             loop:false
         });
+    </script>
     </script>
 </body>
 </html>
